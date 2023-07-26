@@ -1,6 +1,7 @@
 package HW3;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class Main {
@@ -13,9 +14,11 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
         if (choice == 1){
-            market.sortByProductCount();
+            Comparator<Person> personComparator = Comparator.comparingInt(person -> person.getProducts().size());
+            market.sortByProductCount(personComparator);
         } else if (choice == 2) {
-            market.sortByPrice();
+            Comparator<Person> personComparator = Comparator.comparingInt(Person::getPrice);
+            market.sortByPrice(personComparator);
         }
         else {
             System.out.println("Такого варианта сортировки не существует");
