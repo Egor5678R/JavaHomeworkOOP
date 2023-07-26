@@ -62,14 +62,14 @@ public class Market implements MarketBehaviour, QueueBehaviour {
     }
 
 
-    public void sortByProductCount() {
+    public void sortByProductCount(Comparator<Person> personComparator) {
         List<Person> personList = new ArrayList<>(queue);
         personList.sort(Comparator.comparingInt(person -> person.getProducts().size()));
         queue = new LinkedList<>(personList);
 
     }
 
-    public void sortByPrice() {
+    public void sortByPrice(Comparator<Person> personComparator) {
         List<Person> personList = new ArrayList<>(queue);
         personList.sort(Comparator.comparingInt(Person::getPrice));
         queue = new LinkedList<>(personList);
